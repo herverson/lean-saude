@@ -5,6 +5,10 @@
   padding: 0%;
   align-items: center;
   background: #fff;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+  }
 }
 
 .loginBox {
@@ -22,17 +26,17 @@
     font-weight: 900;
     line-height: 24px;
     letter-spacing: 0.4px;
-
   }
+
   .title {
     color: var(--Foundation-CInza-cinza-900, #515151);
-      // font-family: Lato;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 160%;
-      letter-spacing: 0.15px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    letter-spacing: 0.15px;
   }
+
   .sectionTitle {
     color: var(--Foundation-CInza-cinza-800, #6A6A6A);
     font-size: 16px;
@@ -56,11 +60,15 @@
     background-color: #9747FF;
     color: #fff;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 20px;
+  }
 }
 
 .rightContainer {
   flex-grow: 1;
   background-color: #9747FF;
   height: 100vh;
-  
 }
