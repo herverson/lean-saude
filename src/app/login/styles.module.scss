@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  height: 100vh;
+  max-width: 100%;
+  padding: 0%;
+  align-items: center;
+  background: #fff;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  background-color: #fff;
+  padding: 80px 200px 80px 96px;
+
+  .logoTitle {
+    color: #9D9D9D;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+
+  }
+  .title {
+    color: var(--Foundation-CInza-cinza-900, #515151);
+      // font-family: Lato;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 160%;
+      letter-spacing: 0.15px;
+  }
+  .sectionTitle {
+    color: var(--Foundation-CInza-cinza-800, #6A6A6A);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 175%;
+    letter-spacing: 0.15px;
+  }
+
+  .MuiTextField-root {
+    margin-bottom: 15px;
+  }
+
+  .forgotPassword {
+    color: #9747FF;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .loginButton {
+    background-color: #9747FF;
+    color: #fff;
+  }
+}
+
+.rightContainer {
+  flex-grow: 1;
+  background-color: #9747FF;
+  height: 100vh;
+  
+}
