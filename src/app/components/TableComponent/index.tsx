@@ -90,7 +90,7 @@ const TableComponent: React.FC = () => {
                 <TableRow
                   key={row.id}
                   className={`${styles.tableRow} ${
-                    row.status === "Inativo" ? styles.inativo : ""
+                    row.status === "Inativo" ? styles.inativo : styles.ativo
                   }`}
                 >
                   <TableCell className={styles.tableCell}>{row.id}</TableCell>
@@ -101,7 +101,7 @@ const TableComponent: React.FC = () => {
                   <TableCell className={styles.tableCell}>
                     {row.registrationDate}
                   </TableCell>
-                  <TableCell className={styles.tableCell}>
+                  <TableCell className={`${styles.tableCell} ${row.status === "Inativo" ? styles.inativoText : styles.ativoText}`}>
                     {row.status}
                   </TableCell>
                 </TableRow>

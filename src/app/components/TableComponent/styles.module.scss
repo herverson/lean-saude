@@ -39,3 +39,18 @@
 .inativo {
   background-color: #F6F6F6;
 }
+
+.ativoText {
+  text-align: center;
+  color: #46855b;
+  border-radius: 100px;
+  background: linear-gradient(0deg, rgba(10, 178, 67, 0.15) 0%, rgba(10, 178, 67, 0.15) 100%), #FFF; 
+}
+
+.inativoText {
+  text-align: center;
+  color: #e53e3e;
+  border-radius: 100px;
+  border-radius: 100px;
+  background: linear-gradient(0deg, rgba(229, 62, 62, 0.10) 0%, rgba(229, 62, 62, 0.10) 100%), #FFF;
+}
