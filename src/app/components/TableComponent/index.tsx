@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TablePagination,
 } from "@mui/material";
 import styles from "./styles.module.scss";
 import axios from "axios";
@@ -24,6 +25,8 @@ interface UserData {
 const TableComponent: React.FC = () => {
   const { orderBy, searchTerm } = useOrder();
   const [userData, setUserData] = useState<UserData[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     axios
@@ -54,23 +57,36 @@ const TableComponent: React.FC = () => {
     }
   });
 
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <>
-        <TableContainer component={Paper} className={styles.tableContainer}>
-          <Table className={styles.table}>
-            <TableHead>
-              <TableRow className={styles.tableHeader}>
-                <TableCell className={styles.tableCell}>ID</TableCell>
-                <TableCell className={styles.tableCell}>Nome</TableCell>
-                <TableCell className={styles.tableCell}>Telefone</TableCell>
-                <TableCell className={styles.tableCell}>
-                  Data de Cadastro
-                </TableCell>
-                <TableCell className={styles.tableCell}>Status</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {sortedData.map((row) => (
+      <TableContainer component={Paper} className={styles.tableContainer}>
+        <Table className={styles.table}>
+          <TableHead>
+            <TableRow className={styles.tableHeader}>
+              <TableCell className={styles.tableCell}>ID</TableCell>
+              <TableCell className={styles.tableCell}>Nome</TableCell>
+              <TableCell className={styles.tableCell}>Telefone</TableCell>
+              <TableCell className={styles.tableCell}>
+                Data de Cadastro
+              </TableCell>
+              <TableCell className={styles.tableCell}>Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedData
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
                 <TableRow
                   key={row.id}
                   className={`${styles.tableRow} ${
@@ -90,9 +106,22 @@ const TableComponent: React.FC = () => {
                   </TableCell>
                 </TableRow>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+          </TableBody>
+        </Table>
+        <TablePagination
+          labelRowsPerPage="Linhas por página"
+          labelDisplayedRows={({ from, to, count }) =>
+            `${from} - ${to} de ${count}`
+          }
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={sortedData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </TableContainer>
     </>
   );
 };
