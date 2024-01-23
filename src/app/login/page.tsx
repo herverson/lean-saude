@@ -71,13 +71,15 @@ export default function Login() {
             Esqueceu a senha?
           </Typography>
         </Link>
-        <Button
-          variant="contained"
-          color="primary"
-          className={styles.loginButton}
-        >
-          Acessar plataforma
-        </Button>
+        <Link href="/clients" passHref legacyBehavior>
+          <Button
+            variant="contained"
+            color="primary"
+            className={styles.loginButton}
+          >
+            Acessar plataforma
+          </Button>
+        </Link>
       </Box>
       <Box className={styles.rightContainer}></Box>
 

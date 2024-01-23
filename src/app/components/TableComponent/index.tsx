@@ -22,7 +22,7 @@ interface UserData {
 }
 
 const TableComponent: React.FC = () => {
-  const { orderBy } = useOrder();
+  const { orderBy, searchTerm } = useOrder();
   const [userData, setUserData] = useState<UserData[]>([]);
 
   useEffect(() => {
@@ -32,7 +32,13 @@ const TableComponent: React.FC = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const sortedData = userData.slice().sort((a, b) => {
+  const filteredData = userData.filter((user) =>
+    `${user.id} ${user.name} ${user.phone}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
+  const sortedData = filteredData.slice().sort((a, b) => {
     if (orderBy === "nome") {
       return a.name.localeCompare(b.name);
     } else if (orderBy === "telefone") {
@@ -44,7 +50,7 @@ const TableComponent: React.FC = () => {
     } else if (orderBy === "id") {
       return a.id - b.id;
     } else {
-      return 0
+      return 0;
     }
   });
 

@@ -5,6 +5,7 @@ import React, { CSSProperties, useState } from "react";
 
 import styles from "./styles.module.scss";
 import Image from "next/image";
+import { Typography } from "@mui/material";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -16,13 +17,9 @@ export function Navbar() {
   return (
     <header className={styles.headerContainer} style={navbarStyles}>
       <div className={styles.headerContent}>
-        <Image
-          src=""
-          width={120}
-          height={800}
-          alt="LOGO"
-          className={styles.logoHeader}
-        />
+        <Typography variant="h4" color="primary" className={styles.logoTitle}>
+          LOGO
+        </Typography>
         <nav className={styles.web}>
           <Link
             href="/clients"

@@ -14,10 +14,13 @@ import { useOrder } from "../../store/OrderContext";
 import styles from "./styles.module.scss";
 
 const FilterAndSortComponent: React.FC = () => {
-  const { orderBy, setOrderBy } = useOrder();
-
+  const { orderBy, setOrderBy, searchTerm, setSearchTerm } = useOrder();
   const handleSortChange = (event: SelectChangeEvent<string>) => {
     setOrderBy(event.target.value);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -26,6 +29,8 @@ const FilterAndSortComponent: React.FC = () => {
         label="Pesquisar ID ou Nome ou Telefone..."
         variant="outlined"
         style={{ width: "300px" }}
+        onChange={handleSearchChange}
+        value={searchTerm}
       />
       <FormControl variant="outlined" className={styles.sortSelect}>
         <Select
@@ -57,8 +62,7 @@ const FilterAndSortComponent: React.FC = () => {
           inputProps={{ "aria-label": "Without label" }}
           endAdornment={
             <InputAdornment position="end">
-              <IconButton color="primary" aria-label="sort">
-              </IconButton>
+              <IconButton color="primary" aria-label="sort"></IconButton>
             </InputAdornment>
           }
         >
