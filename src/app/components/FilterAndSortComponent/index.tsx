@@ -45,7 +45,19 @@ const FilterAndSortComponent: React.FC = () => {
           }
         >
           <MenuItem value="" disabled>
-            Ordenar por
+            <span
+              style={{
+                color: "#9747FF",
+                fontFamily: "Lato",
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "24px",
+                letterSpacing: "0.4px",
+              }}
+            >
+              Ordenar por
+            </span>
           </MenuItem>
           <MenuItem value="id">ID</MenuItem>
           <MenuItem value="nome">Nome</MenuItem>
@@ -67,7 +79,19 @@ const FilterAndSortComponent: React.FC = () => {
           }
         >
           <MenuItem value="" disabled>
-            Filtros
+            <span
+              style={{
+                color: "#9747FF",
+                fontFamily: "Lato",
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "24px",
+                letterSpacing: "0.4px",
+              }}
+            >
+               Filtros
+            </span>
           </MenuItem>
           <MenuItem value="nome">Nome</MenuItem>
           <MenuItem value="telefone">Telefone</MenuItem>
