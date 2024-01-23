@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -9,7 +10,11 @@ import {
   TableRow,
   Paper,
   TablePagination,
+  IconButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "./styles.module.scss";
 import axios from "axios";
 import { useOrder } from "../../store/OrderContext";
@@ -27,6 +32,7 @@ const TableComponent: React.FC = () => {
   const [userData, setUserData] = useState<UserData[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   useEffect(() => {
     axios
@@ -57,6 +63,14 @@ const TableComponent: React.FC = () => {
     }
   });
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -81,6 +95,7 @@ const TableComponent: React.FC = () => {
                 Data de Cadastro
               </TableCell>
               <TableCell className={styles.tableCell}>Status</TableCell>
+              <TableCell className={styles.tableCell}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -101,8 +116,36 @@ const TableComponent: React.FC = () => {
                   <TableCell className={styles.tableCell}>
                     {row.registrationDate}
                   </TableCell>
-                  <TableCell className={`${styles.tableCell} ${row.status === "Inativo" ? styles.inativoText : styles.ativoText}`}>
-                    {row.status}
+                  <TableCell className={styles.tableCell}>
+                    <div
+                      className={`${styles.statusCell} ${
+                        row.status === "Inativo"
+                          ? styles.inativoText
+                          : styles.ativoText
+                      }`}
+                    >
+                      {row.status}
+                    </div>
+                  </TableCell>
+                  <TableCell className={styles.tableCell}>
+                    <IconButton
+                      aria-label="more"
+                      aria-controls="long-menu"
+                      aria-haspopup="true"
+                      onClick={handleClick}
+                    >
+                      <MoreVertIcon />
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      <MenuItem onClick={handleClose}>Ativar</MenuItem>
+                      <MenuItem onClick={handleClose}>Inativar</MenuItem>
+                    </Menu>
                   </TableCell>
                 </TableRow>
               ))}
