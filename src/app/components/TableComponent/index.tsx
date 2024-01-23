@@ -33,7 +33,7 @@ const TableComponent: React.FC = () => {
   }, []);
 
   const filteredData = userData.filter((user) =>
-    `${user.id} ${user.name} ${user.phone}`
+    `${user.id} ${user.name} ${user.phone} ${user.status} ${user.registrationDate}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
