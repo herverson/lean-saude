@@ -80,6 +80,7 @@ export default function Login() {
         </Button>
       </Box>
       <Box className={styles.rightContainer}></Box>
+
     </Container>
   );
 }

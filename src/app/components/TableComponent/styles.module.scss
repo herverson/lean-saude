@@ -1,0 +1,41 @@
+.tableContainer {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.Sticky {
+  background-color: white;
+  display: flex;
+  padding: 16px 95px 16px 16px;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.tableCell {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+
+  &:first-child {
+    width: 80px;
+  }
+
+  &:last-child {
+    width: 120px;
+  }
+}
+
+.inativo {
+  background-color: #F6F6F6;
+}
