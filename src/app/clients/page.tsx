@@ -2,15 +2,23 @@ import React from "react";
 import TableComponent from "../components/TableComponent";
 import FilterAndSortComponent from "../components/FilterAndSortComponent";
 import { OrderProvider } from "../store/OrderContext";
+import { Navbar } from "../components/Navbar";
+import styles from "./styles.module.scss";
 
-const HomePage: React.FC = () => {
+
+const Clients: React.FC = () => {
   return (
     <OrderProvider>
-      <h1>Sua Página</h1>
-      <FilterAndSortComponent />
-      <TableComponent />
+      <div className={styles.container}>
+        <Navbar />
+        <div className={styles.contentContainer}>
+          <h1>Usuários</h1>
+          <FilterAndSortComponent />
+          <TableComponent />
+        </div>
+      </div>
     </OrderProvider>
   );
 };
 
-export default HomePage;
+export default Clients;

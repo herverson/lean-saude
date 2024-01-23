@@ -9,7 +9,6 @@ import {
   IconButton,
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { ArrowDropDown } from "@mui/icons-material";
 import { useOrder } from "../../store/OrderContext";
 
 import styles from "./styles.module.scss";
@@ -68,7 +67,6 @@ const FilterAndSortComponent: React.FC = () => {
           </MenuItem>
           <MenuItem value="nome">Nome</MenuItem>
           <MenuItem value="telefone">Telefone</MenuItem>
-          {/* Adicione outras opções de ordenação conforme necessário */}
         </Select>
       </FormControl>
     </div>

@@ -9,7 +9,6 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import Sticky from "react-sticky-el";
 import styles from "./styles.module.scss";
 import axios from "axios";
 import { useOrder } from "../../store/OrderContext";
@@ -51,7 +50,6 @@ const TableComponent: React.FC = () => {
 
   return (
     <>
-      <Sticky>
         <TableContainer component={Paper} className={styles.tableContainer}>
           <Table className={styles.table}>
             <TableHead>
@@ -89,7 +87,6 @@ const TableComponent: React.FC = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Sticky>
     </>
   );
 };
