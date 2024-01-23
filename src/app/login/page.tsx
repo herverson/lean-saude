@@ -17,9 +17,37 @@ import styles from "./styles.module.scss";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState<string | undefined>(undefined);
+  const [passError, setPassError] = useState<string | undefined>(undefined);
+
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
+    if (email === "lean@example.com" && password === "password123") {
+      window.location.href = "/clients";
+    } else {
+      if (email !== "lean@example.com" && password !== "password123") {
+        setEmailError("Email não encontrado. Confira e tente novamente.");
+        setPassError(
+          "Senha incorreta. Por favor, verifique e tente novamente."
+        );
+      } else if (email === "lean@example.com" && password !== "password123") {
+        setEmailError("Email não encontrado. Confira e tente novamente.");
+        setPassError(
+          "Senha incorreta. Por favor, verifique e tente novamente."
+        );
+      } else {
+        setEmailError("Email não encontrado. Confira e tente novamente.");
+        setPassError(
+          "Senha incorreta. Por favor, verifique e tente novamente."
+        );
+      }
+    }
   };
 
   return (
@@ -44,6 +72,10 @@ export default function Login() {
           variant="outlined"
           fullWidth
           margin="normal"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          error={!!emailError}
+          helperText={emailError}
         />
         <TextField
           label="Senha"
@@ -52,6 +84,10 @@ export default function Login() {
           variant="outlined"
           fullWidth
           margin="normal"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={!!passError}
+          helperText={passError}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -71,18 +107,16 @@ export default function Login() {
             Esqueceu a senha?
           </Typography>
         </Link>
-        <Link href="/clients" passHref legacyBehavior>
-          <Button
-            variant="contained"
-            color="primary"
-            className={styles.loginButton}
-          >
-            Acessar plataforma
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          color="primary"
+          className={styles.loginButton}
+          onClick={handleLogin}
+        >
+          Acessar plataforma
+        </Button>
       </Box>
       <Box className={styles.rightContainer}></Box>
-
     </Container>
   );
 }
